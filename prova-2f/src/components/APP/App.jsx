@@ -16,12 +16,19 @@ function App() {
             valorVenda
         }])
     }
+
+    const buyProduct = (id, valorCompra) => {
+        setTotal(total - valorCompra)
+        setProdutos(
+            produtos.map((produto) => produto.id === id ? {...produtos, quantidadeEstoque: (quantidadeEstoque - 1)} : produto));
+    }
+
     return (
         <div className={styles.aplicativo}>
             <h1 className={styles.titulo}>Gerenciador de Estoque</h1>
             <h2 className={styles.caixa}>Caixa: R$ {parseFloat(total)}</h2>
             <FormularioProduto handlerAddProduct={handlerAddProduct}/>
-            {/* <ListaEstoque produtos={produtos}/> */}
+            <ListaEstoque produtos={produtos} buyProduct={buyProduct}/>
         </div>
     )
 }

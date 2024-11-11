@@ -1,6 +1,6 @@
 import styles from "./ItemEstoque.module.css";
 
-function ItemEstoque({ produto }) {
+function ItemEstoque({ produto, buyProduct }) {
     return (
         <>
             <div className={`${styles.produtoItem} ${produto.quantidade ?
@@ -8,9 +8,12 @@ function ItemEstoque({ produto }) {
                 styles.estoqueBaixo
             }`}>
                 <span className={styles.nomeProduto}>{produto.nome}</span>
-                <span className={styles.quantidadeProduto}>{produto.quantidade}</span>
-                <span className={styles.valorProduto}>{produto.valor}</span>
-                <button className={`${styles.botoesAcoes} ${styles.botaoComprar}`}></button>
+                <span className={styles.quantidadeProduto}>{produto.quantidadeEstoque}</span>
+                <span className={styles.valorProduto}>R$ {parseFloat(produto.valorVenda)}</span>
+                <button className={`${styles.botoesAcoes} ${styles.botaoComprar}`} onClick={(e) => {
+                    buyProduct(produto.id, produto.valorCompra)
+                }}>+</button>
+                <button className={`${styles.botoesAcoes} ${styles.botaoVender}`}>-</button>
             </div>
         </>
     )
