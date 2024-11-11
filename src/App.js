@@ -1,11 +1,15 @@
 import logo from './logo.svg';
-import './App.css';
+import styles from './App.module.css';
 import Card from './components/Card/Card';
 
 function App() {
   return (
     <>
-    <Card title="Carninha" description="Muito gostosa"/>
+    <div className={styles.principal}>
+      <Card title="FREE" free={true} />
+      <Card title="PREMIUM" premium={true} />
+      <Card title="PRO" pro={true} />
+    </div>
     </>
   );
 }
